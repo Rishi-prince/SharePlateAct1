@@ -14,6 +14,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yourteam.shareplate.R
+import com.yourteam.shareplate.ai.FoodListingAssistant
 import com.yourteam.shareplate.data.model.Listing
 import java.util.Date
 
@@ -27,14 +28,38 @@ class CreateListingFragment : Fragment(R.layout.fragment_create_listing) {
         val layoutAccessDenied = view.findViewById<LinearLayout>(R.id.layoutAccessDenied)
         val layoutProviderForm = view.findViewById<LinearLayout>(R.id.layoutProviderForm)
 
+        val etAiPrompt = view.findViewById<TextInputEditText>(R.id.etAiPrompt)
+        val btnAiAssist = view.findViewById<MaterialButton>(R.id.btnAiAssist)
+
         val etFoodType = view.findViewById<TextInputEditText>(R.id.etFoodType)
         val etQuantity = view.findViewById<TextInputEditText>(R.id.etQuantity)
         val etPickupPoint = view.findViewById<TextInputEditText>(R.id.etPickupPoint)
         val rbVeg = view.findViewById<RadioButton>(R.id.rbVeg)
+        val rbNonVeg = view.findViewById<RadioButton>(R.id.rbNonVeg)
         val btnSubmit = view.findViewById<MaterialButton>(R.id.btnSubmitListing)
 
         layoutProviderForm.visibility = View.GONE
         layoutAccessDenied.visibility = View.GONE
+
+        btnAiAssist.setOnClickListener {
+            val prompt = etAiPrompt.text.toString().trim()
+            if (prompt.isEmpty()) {
+                Toast.makeText(requireContext(), "Please type a food description first", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val parsed = FoodListingAssistant.parseDescription(prompt)
+            etFoodType.setText(parsed.foodType)
+            etQuantity.setText(parsed.quantity.toString())
+            etPickupPoint.setText(parsed.pickupPoint)
+            if (parsed.isVeg) {
+                rbVeg.isChecked = true
+            } else {
+                rbNonVeg.isChecked = true
+            }
+
+            Toast.makeText(requireContext(), "✨ AI Auto-Filled (${parsed.confidenceScore}% Confidence)", Toast.LENGTH_SHORT).show()
+        }
 
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser == null) {
@@ -42,7 +67,6 @@ class CreateListingFragment : Fragment(R.layout.fragment_create_listing) {
             return
         }
 
-        // Check if user is a provider
         FirebaseFirestore.getInstance().collection("users").document(currentUser.uid)
             .get()
             .addOnSuccessListener { doc ->

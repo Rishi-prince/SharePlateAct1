@@ -7,13 +7,15 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yourteam.shareplate.R
+import java.util.Locale
 
 class ImpactDashboardFragment : Fragment(R.layout.fragment_impact_dashboard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val tvMeals = view.findViewById<TextView>(R.id.tvMealsRescuedCount)
-        val tvWaste = view.findViewById<TextView>(R.id.tvWasteAvoided)
+        val tvCo2 = view.findViewById<TextView>(R.id.tvCo2Avoided)
+        val tvWater = view.findViewById<TextView>(R.id.tvWaterSaved)
 
         val currentUser = FirebaseAuth.getInstance().currentUser ?: return
 
@@ -23,8 +25,12 @@ class ImpactDashboardFragment : Fragment(R.layout.fragment_impact_dashboard) {
             .addOnSuccessListener { snapshot ->
                 val count = snapshot.size()
                 tvMeals.text = count.toString()
-                val wasteKg = count * 0.5 // assuming 0.5 kg per meal
-                tvWaste.text = "Estimated Waste Avoided: $wasteKg kg"
+                
+                val co2Kg = count * 2.5
+                val waterLitres = count * 500
+
+                tvCo2.text = "${String.format(Locale.getDefault(), "%.1f", co2Kg)} kg"
+                tvWater.text = "$waterLitres L"
             }
     }
 }
