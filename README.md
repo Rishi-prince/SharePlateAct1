@@ -100,5 +100,10 @@ SharePlate enforces strict role-based security using Cloud Firestore Security Ru
 <img width="293" height="597" alt="Screenshot 2026-10-30 212839" src="https://github.com/user-attachments/assets/547646f9-73f4-4928-b3ee-d4e7f98c417d" />
 
 <img width="283" height="618" alt="Screenshot 2026-10-31 004404" src="https://github.com/user-attachments/assets/33552cbd-503d-4adc-a404-254e4818d887" />
+<img width="1078" height="1468" alt="image" src="https://github.com/user-attachments/assets/b2eede8b-a720-4ada-b5ed-d82db38f7ecf" />
+<img width="1104" height="1593" alt="image" src="https://github.com/user-attachments/assets/be39f80f-626a-4469-88bd-606b1494b057" />
+<img width="1091" height="1600" alt="image" src="https://github.com/user-attachments/assets/ebb21a97-4326-42af-85ba-700a585c1782" />
+
+
 
 
