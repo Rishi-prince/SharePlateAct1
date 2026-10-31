@@ -84,3 +84,21 @@ SharePlate enforces strict role-based security using Cloud Firestore Security Ru
 3. **Firestore Rules**: Copy rules from `firestore.rules` into your Firebase Console under **Firestore Database > Rules** and click **Publish**.
 4. **Build & Run**: Sync Gradle with project files and run on an emulator or physical Android device.
 <img width="295" height="613" alt="Screenshot 2026-10-30 212208" src="https://github.com/user-attachments/assets/5a788a41-3cbe-40bc-af77-56d23cb16f53" />
+<img width="283" height="618" alt="Screenshot 2026-10-31 004404" src="https://github.com/user-attachments/assets/229d0f28-a79e-4a88-a41c-139e71d964a5" />
+<img width="277" height="628" alt="Screenshot 2026-10-30 212715" src="https://github.com/user-attachments/assets/03c70824-d7b8-458e-9b1c-a582a6db114f" /><img width="286" height="612" alt="Screenshot 2026-10-30 212658" src="https://github.com/user-attachments/assets/08b4114e-a517-459c-b43e-7ec65cef0d3c" />
+<img width="297" height="486" alt="Screenshot 2026-10-30 212531" src="https://github.com/user-attachments/assets/cc4db512-9791-4da5-915f-0ca93e99bbda" />
+
+<img width="285" height="622" alt="Screenshot 2026-10-30 212457" src="https://github.com/user-attachments/assets/5e039013-a335-4a98-b42c-bc0bf026550e" />
+
+<img width="290" height="602" alt="Screenshot 2026-10-30 212442" src="https://github.com/user-attachments/assets/777c2b47-7632-4c86-bd14-14d2cbdf5de8" />
+
+
+<img width="295" height="613" alt="Screenshot 2026-10-30 212208" src="https://github.com/user-attachments/assets/36918983-36d5-4e38-be50-c683dd9cbd8f" />
+
+<img width="293" height="612" alt="Screenshot 2026-10-30 212420" src="https://github.com/user-attachments/assets/61fa4f50-7fbc-4d30-9449-c68bad51f216" />
+
+<img width="293" height="597" alt="Screenshot 2026-10-30 212839" src="https://github.com/user-attachments/assets/547646f9-73f4-4928-b3ee-d4e7f98c417d" />
+
+<img width="283" height="618" alt="Screenshot 2026-10-31 004404" src="https://github.com/user-attachments/assets/33552cbd-503d-4adc-a404-254e4818d887" />
+
+
