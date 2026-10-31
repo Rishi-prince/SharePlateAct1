@@ -5,9 +5,9 @@
         android:icon="@android:drawable/ic_menu_compass"
         android:title="Home" />
     <item
-        android:id="@+id/notificationsFragment"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:title="Alerts" />
+        android:id="@+id/shareBotFragment"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="ShareBot" />
     <item
         android:id="@+id/myReservationsFragment"
         android:icon="@android:drawable/ic_menu_myplaces"

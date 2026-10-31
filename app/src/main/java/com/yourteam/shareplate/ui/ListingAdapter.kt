@@ -3,6 +3,7 @@ package com.yourteam.shareplate.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.yourteam.shareplate.R
@@ -14,6 +15,7 @@ class ListingAdapter(
 ) : RecyclerView.Adapter<ListingAdapter.ListingViewHolder>() {
 
     class ListingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val ivThumbnail: ImageView = view.findViewById(R.id.ivFoodThumbnail)
         val tvFoodType: TextView = view.findViewById(R.id.tvFoodType)
         val tvStatus: TextView = view.findViewById(R.id.tvStatus)
         val tvQuantity: TextView = view.findViewById(R.id.tvQuantity)
@@ -30,7 +32,19 @@ class ListingAdapter(
         holder.tvFoodType.text = listing.foodType
         holder.tvQuantity.text = "${listing.remainingQuantity} / ${listing.quantity} portions remaining"
         holder.tvPickupPoint.text = "Pickup: ${listing.pickupPoint}"
-        holder.tvStatus.text = listing.status.uppercase()
+        
+        // Category-based icon fallback
+        holder.ivThumbnail.setImageResource(R.drawable.ic_food_placeholder)
+
+        val diffMillis = listing.expiryTime?.toDate()?.time?.minus(System.currentTimeMillis()) ?: 0
+        val hoursLeft = diffMillis / (1000 * 60 * 60)
+        val urgencyText = when {
+            hoursLeft <= 0 -> "🔴 Expired"
+            hoursLeft <= 1 -> "🔴 Ending Soon"
+            hoursLeft <= 2 -> "🟡 Pickup Soon"
+            else -> "🟢 Fresh"
+        }
+        holder.tvStatus.text = urgencyText
         
         holder.itemView.setOnClickListener { onItemClick(listing.listingId) }
     }

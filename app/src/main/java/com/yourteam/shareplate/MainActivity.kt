@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.homeFeedFragment,
                 R.id.notificationsFragment,
+                R.id.shareBotFragment,
                 R.id.myReservationsFragment,
                 R.id.impactDashboardFragment,
                 R.id.profileSettingsFragment,
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                         if (role == "provider" && bottomNavigationView.menu.findItem(R.id.createListingFragment) == null) {
                             bottomNavigationView.menu.clear()
                             bottomNavigationView.inflateMenu(R.menu.bottom_nav_provider)
-                        } else if (role == "student" && bottomNavigationView.menu.findItem(R.id.notificationsFragment) == null) {
+                        } else if (role == "student" && bottomNavigationView.menu.findItem(R.id.shareBotFragment) == null) {
                             bottomNavigationView.menu.clear()
                             bottomNavigationView.inflateMenu(R.menu.bottom_nav_student)
                         }

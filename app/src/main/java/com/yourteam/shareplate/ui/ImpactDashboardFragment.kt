@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yourteam.shareplate.R
@@ -16,6 +18,11 @@ class ImpactDashboardFragment : Fragment(R.layout.fragment_impact_dashboard) {
         val tvMeals = view.findViewById<TextView>(R.id.tvMealsRescuedCount)
         val tvCo2 = view.findViewById<TextView>(R.id.tvCo2Avoided)
         val tvWater = view.findViewById<TextView>(R.id.tvWaterSaved)
+        val btnLeaderboard = view.findViewById<MaterialButton>(R.id.btnViewLeaderboard)
+
+        btnLeaderboard.setOnClickListener {
+            findNavController().navigate(R.id.action_impactDashboardFragment_to_leaderboardFragment)
+        }
 
         val currentUser = FirebaseAuth.getInstance().currentUser ?: return
 

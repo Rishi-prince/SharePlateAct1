@@ -3,7 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/onboardingFragment">
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.yourteam.shareplate.ui.OnboardingFragment"
+        android:label="Onboarding"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboardingFragment_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/splashFragment"
@@ -48,6 +60,9 @@
         <action
             android:id="@+id/action_homeFeedFragment_to_notificationsFragment"
             app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_homeFeedFragment_to_shareBotFragment"
+            app:destination="@id/shareBotFragment" />
         <action
             android:id="@+id/action_homeFeedFragment_to_impactDashboardFragment"
             app:destination="@id/impactDashboardFragment" />
@@ -117,6 +132,12 @@
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
+        android:id="@+id/shareBotFragment"
+        android:name="com.yourteam.shareplate.ui.ShareBotFragment"
+        android:label="ShareBot AI Assistant"
+        tools:layout="@layout/fragment_share_bot" />
+
+    <fragment
         android:id="@+id/myReservationsFragment"
         android:name="com.yourteam.shareplate.ui.MyReservationsFragment"
         android:label="My Reservations"
@@ -130,7 +151,17 @@
         android:id="@+id/impactDashboardFragment"
         android:name="com.yourteam.shareplate.ui.ImpactDashboardFragment"
         android:label="Impact Dashboard"
-        tools:layout="@layout/fragment_impact_dashboard" />
+        tools:layout="@layout/fragment_impact_dashboard">
+        <action
+            android:id="@+id/action_impactDashboardFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.yourteam.shareplate.ui.LeaderboardFragment"
+        android:label="Leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 
     <fragment
         android:id="@+id/profileSettingsFragment"
